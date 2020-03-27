@@ -1,0 +1,75 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "洋芋的店"
+			}
+		},
+		{
+			"path": "pages/project/project",
+			"style": {
+				"navigationBarTitleText": "洋芋的店"
+			}
+		},
+		{
+			"path": "pages/classification/classification",
+			"style": {
+				"navigationBarTitleText": "洋芋的店"
+			}
+		},
+		{
+			"path": "pages/shoppingCart/shoppingCart",
+			"style": {
+				"navigationBarTitleText": "洋芋的店"
+			}
+		},
+		{
+			"path": "pages/my/my",
+			"style": {
+				"navigationBarTitleText": "洋芋的店"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#B4282D",
+		"backgroundColor": "#fffff"
+	},
+	"tabBar": {
+		"color": "#515151",
+		"selectedColor": "#f46f46",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/images/index.png",
+				"selectedIconPath": "static/images/index-select.png"
+			},
+			{
+				"pagePath": "pages/project/project",
+				"text": "专题",
+				"iconPath": "static/images/project.png",
+				"selectedIconPath": "static/images/project-select.png"
+			},
+			{
+				"pagePath": "pages/classification/classification",
+				"text": "分类",
+				"iconPath": "static/images/classification.png",
+				"selectedIconPath": "static/images/classification-select.png"
+			},
+			{
+				"pagePath": "pages/shoppingCart/shoppingCart",
+				"text": "购物车",
+				"iconPath": "static/images/shoppingCar.png",
+				"selectedIconPath": "static/images/shoppingCar-select.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "static/images/my.png",
+				"selectedIconPath": "static/images/my-select.png"
+			}
+		]
+	}
+
+}
