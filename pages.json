@@ -12,6 +12,12 @@
 			}
 		},
 		{
+			"path": "pages/projectDetail/projectDetail",
+			"style": {
+				"navigationBarTitleText": "洋芋的店"
+			}
+		},
+		{
 			"path": "pages/classification/classification",
 			"style": {
 				"navigationBarTitleText": "洋芋的店"
@@ -28,11 +34,62 @@
 			"style": {
 				"navigationBarTitleText": "洋芋的店"
 			}
+		},
+		{
+			"path": "pages/category/category",
+			"style": {}
+		},
+		{
+			"path": "pages/brandDetail/brandDetail",
+			"style": {}
+		},
+		{
+			"path": "pages/goodsList/goodsList",
+			"style": {}
+		},
+		{
+			"path": "pages/goodsDetail/goodsDetail",
+			"style": {}
+		},
+		{
+			"path": "pages/classifiDetail/classifiDetail",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/search/search",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/payList/payList",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/address/address",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/addressDetail/addressDetail",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/opinion/opinion",
+			"style": {
+			}
+		},
+		{
+			"path": "pages/collect/collect",
+			"style": {
+			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "洋芋的店",
 		"navigationBarBackgroundColor": "#B4282D",
 		"backgroundColor": "#fffff"
 	},

@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/project/project",
+    "pages/projectDetail/projectDetail",
+    "pages/classification/classification",
+    "pages/shoppingCart/shoppingCart",
+    "pages/my/my",
+    "pages/category/category",
+    "pages/brandDetail/brandDetail",
+    "pages/goodsList/goodsList",
+    "pages/goodsDetail/goodsDetail",
+    "pages/classifiDetail/classifiDetail",
+    "pages/search/search"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "洋芋的店",
+    "navigationBarBackgroundColor": "#B4282D",
+    "backgroundColor": "#fffff"
+  },
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#f46f46",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/images/index.png",
+        "selectedIconPath": "static/images/index-select.png"
+      },
+      {
+        "pagePath": "pages/project/project",
+        "text": "专题",
+        "iconPath": "static/images/project.png",
+        "selectedIconPath": "static/images/project-select.png"
+      },
+      {
+        "pagePath": "pages/classification/classification",
+        "text": "分类",
+        "iconPath": "static/images/classification.png",
+        "selectedIconPath": "static/images/classification-select.png"
+      },
+      {
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "text": "购物车",
+        "iconPath": "static/images/shoppingCar.png",
+        "selectedIconPath": "static/images/shoppingCar-select.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my-select.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap27.json"
+}

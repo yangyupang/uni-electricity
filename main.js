@@ -5,7 +5,11 @@ Vue.config.productionTip = false
 
 Vue.prototype.$api = api;
 App.mpType = 'app'
-
+Vue.prototype.$gotoDetail = (url, id) => {
+	uni.navigateTo({
+		url: `/pages/${url}/${url}?id=${id}`
+	})
+}
 const app = new Vue({
 	...App
 })

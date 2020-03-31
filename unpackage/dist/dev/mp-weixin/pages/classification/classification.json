@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "洋芋的店",
+  "usingComponents": {
+    "classification-list": "/components/classification/classificationList",
+    "classification-nav": "/components/classification/classificationNav"
+  }
+}

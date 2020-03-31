@@ -1,0 +1,1 @@
+<view class="location-container data-v-3fafe68c"><block wx:if="{{location}}"><view class="txt-hidden data-v-3fafe68c">{{''+location+''}}</view></block><block wx:else><view class="txt-hidden data-v-3fafe68c">获取定位中...</view></block></view>

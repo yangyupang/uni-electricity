@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "good-box": "/components/common/goodBox",
+    "uni-icons": "/components/uni-ui/uni-icons/uni-icons"
+  }
+}
