@@ -22,7 +22,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="goods-boxs" v-if="goodList.length>0">
+		<view class="goods-boxs flex a-center flex-wrap jc-around" v-if="goodList.length>0">
 			<goodBox v-for="item in goodList" :item="item" :key="item.id" />
 		</view>
 		<view v-else>

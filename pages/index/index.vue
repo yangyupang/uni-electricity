@@ -83,9 +83,15 @@
 </template>
 
 <script>
+	// #ifdef H5
 	import H5Location from '../../components/index/indexLocation/H5Location.vue'
+	//#endif
+	//#ifdef APP-PLUS
 	import AppLocation from '../../components/index/indexLocation/AppLocation.vue'
+	//#endif
+	// #ifdef MP-WEIXIN
 	import MpLocation from '../../components/index/indexLocation/MpLocation.vue'
+	//#endif
 	import indexGoods from '../../components/index/indexGoods/indexGoods.vue'
 	import indexGoodBox from '../../components/index/indexGoodBox/indexGoodBox.vue'
 	export default {
@@ -99,9 +105,15 @@
 			}
 		},
 		components: {
+			//#ifdef H5
 			H5Location,
+			//#endif
+			//#ifdef APP-PLUS
 			AppLocation,
+			//#endif
+			//#ifdef MP-WEIXIN
 			MpLocation,
+			//#endif
 			indexGoods,
 			indexGoodBox
 		},
@@ -122,36 +134,48 @@
 				})
 			},
 			openMap() {
-				// let location = uni.getStorageSync('local')
-				// uni.chooseLocation({
-				// 	latitude: location.latitude,
-				// 	longitude: location.longitude,
-				// 	success: (res) => {
-				// 		uni.setStorageSync('local', {
-				// 			name: res.name,
-				// 			latitude: res.latitude,
-				// 			longitude: res.longitude
-				// 		})
-				// 		this.$refs.location.location = res.name
-				// 	}
-				// });
+				let location = uni.getStorageSync('local')
+				uni.chooseLocation({
+					latitude: location.latitude,
+					longitude: location.longitude,
+					success: (res) => {
+						uni.setStorageSync('local', {
+							name: res.name,
+							latitude: res.latitude,
+							longitude: res.longitude
+						})
+						this.$refs.location.location = res.name
+					}
+				});
 			}
 		},
 		onLoad() {
 			this.getIndex()
 		},
 		onShow() {
-		// 	if (!uni.getStorageSync('local')) {
-		// 		this.$nextTick(() => {
-		// 			this.$refs.location.getAuthorize()
-		// 		})
-		// 	} else {
-		// 		let location = uni.getStorageSync('local')
-		// 		console.log(location);
-		// 		this.$nextTick(() => {
-		// 			this.$refs.location.location = location.name
-		// 		})
-		// 	}
+			//#ifdef MP-WEIXIN
+			if (!uni.getStorageSync('local')) {
+				this.$nextTick(() => {
+					this.$refs.location.getAuthorize()
+				})
+			} else {
+				let location = uni.getStorageSync('local')
+				// console.log(location);
+				this.$nextTick(() => {
+					this.$refs.location.location = location.name
+				})
+			}
+			if (uni.getStorageSync('user')) {
+				this.$api.getCartList(uni.getStorageSync('openId')).then(res => {
+					if (res.data.data) {
+						uni.setTabBarBadge({
+							index: 3,
+							text: String(res.data.data.length)
+						})
+					}
+				})
+			}
+			//#endif
 		}
 	}
 </script>

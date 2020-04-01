@@ -135,8 +135,27 @@
 			this.setHeight()
 		},
 		onShow() {
-			this.openId = uni.getStorageSync('openId')
-			this.getCart()
+			if (uni.getStorageSync('user')) {
+				this.openId = uni.getStorageSync('openId')
+				this.getCart()
+			} else {
+				this.cartList = []
+				uni.showModal({
+					title: '请登录',
+					content: '本页面需要登录才能操作',
+					success: (res) => {
+						if (res.confirm) {
+							uni.switchTab({
+								url: "/pages/my/my"
+							})
+						} else {
+							uni.switchTab({
+								url: "/pages/index/index"
+							})
+						}
+					}
+				});
+			}
 		},
 		computed: {
 			select() {
@@ -167,7 +186,8 @@
 
 		.top-desc {
 			height: 100rpx;
-			.disc{
+
+			.disc {
 				font-size: 30rpx;
 			}
 		}

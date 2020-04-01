@@ -42,9 +42,6 @@
   -webkit-align-items: center;
           align-items: center;
 }
-.t-center {
-  text-align: center;
-}
 .jc-around {
   -webkit-justify-content: space-around;
           justify-content: space-around;
@@ -54,15 +51,26 @@
   -webkit-justify-content: space-between;
           justify-content: space-between;
 }
+.jc-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.txt-hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .position-re {
   position: relative;
 }
 .position-ab {
   position: absolute;
 }
-.txt-hidden {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.t-center {
+  text-align: center;
+}
+.border-down {
+  border-bottom: 2rpx solid #F5F5F5;
 }
 

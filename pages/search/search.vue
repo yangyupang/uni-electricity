@@ -5,12 +5,12 @@
 				<view class="search-icon t-center">
 					<image src="../../static/images/search.png" mode=""></image>
 				</view>
-				<input placeholder="请输入搜索内容"  @confirm="confirm" type="text" v-model="value" />
+				<input placeholder="请输入搜索内容" @confirm="confirm" type="text" v-model="value" />
 				<view v-if="show" @click="clear" class="clear-icon position-ab">
-					<uni-icons color="#999999" class="" size="24" type="clear" />
+					<image src="../../static/images/poor.png" mode=""></image>
 				</view>
 			</view>
-			<view class="" @click="cancel">取消</view>
+			<view class="" style="width: 56rpx;font-size: 28rpx;" @click="cancel">取消</view>
 		</view>
 
 		<view class="" v-if="results.length>0">
@@ -75,9 +75,9 @@
 			},
 			clear() {
 				this.value = ''
-				this.results=[]
+				this.results = []
 			},
-			confirm(){
+			confirm() {
 				this.$api.getSearch((this.value).trim()).then(res => {
 					if (res.status === 200) {
 						this.results = res.data.keywords
@@ -106,7 +106,9 @@
 					content: '是否清除历史浏览记录',
 					success: (res) => {
 						if (res.confirm) {
-							this.$api.getEmptySearch({openId:this.openId}).then(res => {
+							this.$api.getEmptySearch({
+								openId: this.openId
+							}).then(res => {
 								if (res.status === 200) {
 									this.historyData = []
 									uni.showToast({
@@ -127,7 +129,7 @@
 			},
 			cancel() {
 				this.value = ''
-				this.results=[]
+				this.results = []
 			},
 			gotoDetail(id) {
 				uni.navigateTo({
@@ -140,7 +142,7 @@
 				// console.log(val);
 				if (val === '') {
 					this.getSearchRelated()
-					this.results=[]
+					this.results = []
 				} else {
 					this.goSearch(val)
 				}
@@ -173,8 +175,16 @@
 		.clear-icon {
 			right: 0px;
 			top: 0;
-			width: 30px;
+			width: 60rpx;
+			height: 60rpx;
+			font-size: 28rpx;
 			text-align: center;
+
+			image {
+				width: 40rpx;
+				height: 40rpx;
+				margin-top: 12rpx
+			}
 		}
 	}
 

@@ -1,0 +1,20 @@
+
+.address-container {
+	padding: 0 20rpx;
+}
+.address-each {
+	padding: 30rpx 0;
+	border-bottom: 2rpx solid #F5F5F5;
+}
+.address-checkbox {
+	margin-top: 40rpx;
+}
+.bottom-save {
+	bottom: 0;
+	line-height: 100rpx;
+	height: 100rpx;
+	width: 100%;
+	background: #ab212c;
+	color: white;
+}
+

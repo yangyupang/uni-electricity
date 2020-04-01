@@ -127,6 +127,7 @@
 				showFlag: false,
 				goodNum: 1,
 				openId: '',
+				user: '',
 				tagStyle: {
 					img: 'display:block'
 				},
@@ -153,86 +154,112 @@
 		},
 		methods: {
 			onClick(e) {
-				//区分点击收藏和购物车
-				if (e.content.text === '收藏') {
-					//如果未收藏则添加收藏，反则提示已收藏
-					if (this.options[0].icon === 'heart') {
-						this.$api.getIsCollect({
-							goodsId: this.id,
-							openId: this.openId
-						}).then(res => {
-							if (res.data.data === "success") {
-								uni.showToast({
-									title: "收藏成功",
-									duration: 800
-								})
-								this.options[0].icon = "heart-filled"
-							}
-						})
+				if (this.user !== '') {
+					//区分点击收藏和购物车
+					if (e.content.text === '收藏') {
+						//如果未收藏则添加收藏，反则提示已收藏
+						if (this.options[0].icon === 'heart') {
+							this.$api.getIsCollect({
+								goodsId: this.id,
+								openId: this.openId
+							}).then(res => {
+								if (res.data.data === "success") {
+									uni.showToast({
+										title: "收藏成功",
+										duration: 800
+									})
+									this.options[0].icon = "heart-filled"
+								}
+							})
+						} else {
+							this.$api.getIsCollect({
+								goodsId: this.id,
+								openId: this.openId
+							}).then(res => {
+								if (res.data.data === "success") {
+									uni.showToast({
+										title: "取消收藏",
+										duration: 800
+									})
+									this.options[0].icon = "heart"
+								}
+							})
+							// uni.showToast({
+							// 	icon: "none",
+							// 	title: "该商品已经被收藏了",
+							// 	duration: 800
+							// })
+						}
 					} else {
-						this.$api.getIsCollect({
-							goodsId: this.id,
-							openId: this.openId
-						}).then(res => {
-							if (res.data.data === "success") {
-								uni.showToast({
-									title: "取消收藏",
-									duration: 800
-								})
-								this.options[0].icon = "heart"
-							}
-						})
-						// uni.showToast({
-						// 	icon: "none",
-						// 	title: "该商品已经被收藏了",
-						// 	duration: 800
-						// })
+						//如果购物车有物品则跳转，没有则提示
+						if (this.options[1].info === 0) {
+							uni.showToast({
+								icon: "none",
+								title: "购物车内暂无商品",
+								duration: 800
+							})
+						} else {
+							uni.switchTab({
+								url: "/pages/shoppingCart/shoppingCart"
+							})
+						}
 					}
 				} else {
-					//如果购物车有物品则跳转，没有则提示
-					if (this.options[1].info === 0) {
-						uni.showToast({
-							icon: "none",
-							title: "购物车内暂无商品",
-							duration: 800
-						})
-					} else {
-						uni.switchTab({
-							url: "/pages/shoppingCart/shoppingCart"
-						})
-					}
+					uni.showToast({
+						icon: "none",
+						title: "您还没有登录",
+						duration: 800
+					})
 				}
 			},
 			buttonClick(e) {
-				if (this.showFlag) {
-					if (e.index === 0) {
-						this.$api.getAddCart({
-							goodsId: this.id,
-							number: Number(this.goodNum),
-							openId: this.openId
-						}).then(res => {
-							this.getNum()
-						})
+				if (this.user !== '') {
+					if (this.showFlag) {
+						if (e.index === 0) {
+							this.$api.getAddCart({
+								goodsId: this.id,
+								number: Number(this.goodNum),
+								openId: this.openId
+							}).then(res => {
+								this.getNum()
+							})
+						} else {
+							let paylist = JSON.stringify([{
+								goods_id: this.id,
+								goods_name: this.detailData.info.name,
+								list_pic_url: this.detailData.info.list_pic_url,
+								number: this.goodNum,
+								retail_price: this.detailData.info.retail_price,
+								type: 'payNow'
+							}])
+							uni.navigateTo({
+								url: `/pages/payList/payList?paylist=${paylist}`
+							})
+						}
 					} else {
-						let paylist = JSON.stringify([{
-							goods_id: this.id,
-							goods_name: this.detailData.info.name,
-							list_pic_url: this.detailData.info.list_pic_url,
-							number: this.goodNum,
-							retail_price: this.detailData.info.retail_price,
-							type: 'payNow'
-						}])
-						uni.navigateTo({
-							url: `/pages/payList/payList?paylist=${paylist}`
-						})
+						this.openPopup()
 					}
 				} else {
-					this.openPopup()
+					uni.showToast({
+						icon: "none",
+						title: "您还没有登录",
+						duration: 800
+					})
 				}
+
 			},
 			openPopup() {
-				this.$refs.popup.open()
-				this.showFlag = true
+				if (this.user !== '') {
+					this.$refs.popup.open()
+					this.showFlag = true
+				} else {
+					uni.showToast({
+						icon: "none",
+						title: "您还没有登录",
+						duration: 800
+					})
+				}
+
 			},
 			changeNum(e) {
 				this.goodNum = e
@@ -268,8 +295,25 @@
 		onLoad(options) {
 			this.id = options.id
 			this.openId = uni.getStorageSync('openId')
+			this.user = uni.getStorageSync('user')
 			this.getDetail(options.id)
 			this.winHeight = uni.getSystemInfoSync().windowHeight - 50
+		},
+		onShow() {
+			console.log(11);
+			if (this.user !== '') {
+				console.log("算商品");
+				this.$api.getCartList(uni.getStorageSync('openId')).then(res => {
+					if (res.data.data) {
+						uni.setTabBarBadge({
+							index: 3,
+							text: String(res.data.data.length)
+						})
+						this.options[1].info = Number(res.data.data.length)
+					}
+				})
+			}
+
 		}
 	}
 </script>

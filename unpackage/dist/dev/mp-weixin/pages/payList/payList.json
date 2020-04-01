@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "pay-good-box": "/components/common/payGoodBox",
+    "show-address": "/components/paylist/showAdress"
+  }
+}

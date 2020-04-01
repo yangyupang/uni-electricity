@@ -24,6 +24,33 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.input-sty {
+  margin: 20rpx 20rpx;
+  padding: 10rpx 0;
+  background-color: #F4F4F4;
+  width: 640rpx;
+}
+.input-sty .search-icon {
+    width: 80rpx;
+    line-height: 20rpx;
+}
+.input-sty .search-icon image {
+      width: 40rpx;
+      height: 40rpx;
+}
+.input-sty .clear-icon {
+    right: 0px;
+    top: 0;
+    width: 60rpx;
+    height: 60rpx;
+    font-size: 28rpx;
+    text-align: center;
+}
+.input-sty .clear-icon image {
+      width: 40rpx;
+      height: 40rpx;
+      margin-top: 12rpx;
+}
 .reslut-box {
   margin: 40rpx 20rpx;
 }

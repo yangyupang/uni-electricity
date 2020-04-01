@@ -1,8 +1,6 @@
 {
   "navigationBarTitleText": "洋芋的店",
   "usingComponents": {
-    "h5-location": "/components/index/indexLocation/H5Location",
-    "app-location": "/components/index/indexLocation/AppLocation",
     "mp-location": "/components/index/indexLocation/MpLocation",
     "index-goods": "/components/index/indexGoods/indexGoods",
     "index-good-box": "/components/index/indexGoodBox/indexGoodBox"

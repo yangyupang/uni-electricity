@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "uni-search-bar": "/components/uni-ui/uni-search-bar/uni-search-bar",
     "uni-icons": "/components/uni-ui/uni-icons/uni-icons"
   }
 }

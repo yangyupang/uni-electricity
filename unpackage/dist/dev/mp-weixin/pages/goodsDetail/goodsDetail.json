@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "parser": "/components/jyf-parser/jyf-parser",
+    "title-line": "/components/common/titleLine",
+    "good-box": "/components/common/goodBox",
+    "uni-goods-nav": "/components/uni-ui/uni-goods-nav/uni-goods-nav",
+    "uni-icons": "/components/uni-ui/uni-icons/uni-icons",
+    "uni-popup": "/components/uni-ui/uni-popup/uni-popup",
+    "uni-number-box": "/components/uni-ui/uni-number-box/uni-number-box"
+  }
 }

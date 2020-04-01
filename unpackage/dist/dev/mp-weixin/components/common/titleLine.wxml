@@ -1,0 +1,1 @@
+<view class="title flex jc-around data-v-6a272212"><view class="flex a-center data-v-6a272212"><view class="title-line data-v-6a272212"></view><slot></slot><view class="title-line data-v-6a272212"></view></view></view>
