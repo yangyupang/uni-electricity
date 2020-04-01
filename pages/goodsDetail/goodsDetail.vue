@@ -300,19 +300,8 @@
 			this.winHeight = uni.getSystemInfoSync().windowHeight - 50
 		},
 		onShow() {
-			console.log(11);
-			if (this.user !== '') {
-				console.log("算商品");
-				this.$api.getCartList(uni.getStorageSync('openId')).then(res => {
-					if (res.data.data) {
-						uni.setTabBarBadge({
-							index: 3,
-							text: String(res.data.data.length)
-						})
-						this.options[1].info = Number(res.data.data.length)
-					}
-				})
-			}
+			// console.log(11);
+
 
 		}
 	}

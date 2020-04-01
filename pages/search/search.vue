@@ -5,7 +5,8 @@
 				<view class="search-icon t-center">
 					<image src="../../static/images/search.png" mode=""></image>
 				</view>
-				<input placeholder="请输入搜索内容" @confirm="confirm" type="text" v-model="value" />
+				<!-- @confirm="confirm" -->
+				<input placeholder="请输入搜索内容" type="text" v-model="value" />
 				<view v-if="show" @click="clear" class="clear-icon position-ab">
 					<image src="../../static/images/poor.png" mode=""></image>
 				</view>
@@ -77,14 +78,14 @@
 				this.value = ''
 				this.results = []
 			},
-			confirm() {
-				this.$api.getSearch((this.value).trim()).then(res => {
-					if (res.status === 200) {
-						this.results = res.data.keywords
-					}
-					this.getAddSearch((this.value).trim())
-				})
-			},
+			// confirm() {
+			// 	this.$api.getSearch((this.value).trim()).then(res => {
+			// 		if (res.status === 200) {
+			// 			this.results = res.data.keywords
+			// 		}
+			// 		this.getAddSearch((this.value).trim())
+			// 	})
+			// },
 			goSearch(keyword) {
 				this.value = (keyword).trim()
 				this.$api.getSearch(this.value).then(res => {
@@ -98,6 +99,8 @@
 				this.$api.getAddSearch({
 					keyword: value,
 					openId: this.openId
+				}).then(res =>{
+					// console.log(res);
 				})
 			},
 			clearHistory() {

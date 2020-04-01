@@ -55,7 +55,7 @@
 			getCart() {
 				this.$api.getCartList(this.openId).then(res => {
 					this.cartList = res.data.data
-					// console.log(this.cartList);
+					// console.log(res);
 					for (var i = 0, lenI = this.cartList.length; i < lenI; ++i) {
 						const item = this.cartList[i]
 						this.$set(item, 'checked', true)
@@ -138,6 +138,15 @@
 			if (uni.getStorageSync('user')) {
 				this.openId = uni.getStorageSync('openId')
 				this.getCart()
+				// console.log("算商品");
+				this.$api.getCartList(uni.getStorageSync('openId')).then(res => {
+					if (res.data.data) {
+						uni.setTabBarBadge({
+							index: 3,
+							text: String(res.data.data.length)
+						})
+					}
+				})
 			} else {
 				this.cartList = []
 				uni.showModal({
