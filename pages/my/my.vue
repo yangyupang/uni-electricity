@@ -116,11 +116,11 @@
 			getUserInfo(e) {
 				if (e.detail.rawData) {
 					this.user = JSON.parse(e.detail.rawData)
-					const openId = md5(uni.getStorageSync('openId'))
+					const openId = md5(this.user.nickName + this.user.avatarUrl)
+					uni.setStorageSync('openId',openId)
 					uni.setStorageSync('user', {
 						nickName: this.user.nickName,
-						avatarUrl: this.user.avatarUrl,
-						openId
+						avatarUrl: this.user.avatarUrl
 					})
 					this.$api.getCartList(uni.getStorageSync('openId')).then(res => {
 						if (res.data.data) {
@@ -145,6 +145,12 @@
 					avatarUrl: 'https://avatars1.githubusercontent.com/u/55611024?s=460&u=ec3b68ce653f100c739b981cd2344b235b4e191d&v=4',
 					nickName: 'yangyupang'
 				}
+				const openId = md5(this.user.nickName + this.user.avatarUrl)
+				uni.setStorageSync('openId',openId)
+				uni.setStorageSync('user', {
+					nickName: this.user.nickName,
+					avatarUrl: this.user.avatarUrl
+				})
 				this.$api.getCartList(uni.getStorageSync('openId')).then(res => {
 					if (res.data.data) {
 						uni.setTabBarBadge({
@@ -152,12 +158,6 @@
 							text: String(res.data.data.length)
 						})
 					}
-				})
-				const openId = md5(uni.getStorageSync('openId'))
-				uni.setStorageSync('user', {
-					nickName: this.user.nickName,
-					avatarUrl: this.user.avatarUrl,
-					openId
 				})
 			},
 			// #endif
